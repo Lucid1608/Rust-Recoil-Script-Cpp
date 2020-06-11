@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Mouse">
+      <UniqueIdentifier>{bbefee2a-69c2-4519-b475-fc50457ceecd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Structures">
+      <UniqueIdentifier>{8b004305-4f9a-4210-bf17-df24e0406a6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Recoil Functions">
+      <UniqueIdentifier>{46c96951-3b11-47cd-ad7a-07a067aff5af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Time">
+      <UniqueIdentifier>{b72c2319-6bfd-4720-8e68-b430b9a5fd15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Recoil Data">
+      <UniqueIdentifier>{f4bbb76d-9d5e-402a-bf19-0296301a2bc5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Script-Main.cpp" />
+    <ClCompile Include="Input\Input.cpp">
+      <Filter>Source Files\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="Rust Recoil\Rust Recoil.cpp">
+      <Filter>Source Files\Recoil Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Time\Time.cpp">
+      <Filter>Source Files\Time</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Input\Input.hpp">
+      <Filter>Source Files\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="Recoil Data\Recoil Data.hpp">
+      <Filter>Source Files\Recoil Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Rust Recoil\Rust Recoil.hpp">
+      <Filter>Source Files\Recoil Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="Structure\Struct.hpp">
+      <Filter>Source Files\Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="Time\Time.hpp">
+      <Filter>Source Files\Time</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
