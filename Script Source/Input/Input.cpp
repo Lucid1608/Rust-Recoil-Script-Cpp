@@ -30,7 +30,7 @@ namespace Input
 		/*
 		* Relative mouse move function
 		*/
-		inline bool RealitiveMove(Vector2 pos)
+		inline bool RelaitiveMove(Vector2 pos)
 		{
 			INPUT input;
 			input.type = INPUT_MOUSE;
@@ -63,7 +63,7 @@ namespace Input
 				int y = index * static_cast<int>(pos.y) / static_cast<int>(animation);
 
 				/* Compensate recoil */
-				RealitiveMove(Vector2{ static_cast<double>(x - previous_x), static_cast<double>(y - previous_y)});
+				RelaitiveMove(Vector2{ static_cast<double>(x - previous_x), static_cast<double>(y - previous_y)});
 
 				/* Sleep for 1ms because thats just what it is */
 				Time::Sleep(1, excess);
