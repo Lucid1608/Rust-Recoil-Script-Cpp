@@ -52,10 +52,10 @@ void KeyBindThread()
 				/* Avoid fat finger button spam */
 				SleepEx(150, false);
 			}
-		}
 
-		/* Keep that CPU on the down low */
-		SleepEx(1, false);
+			/* Keep that CPU on the down low */
+			SleepEx(1, false);
+		}
 	}
 }
 
@@ -92,8 +92,8 @@ int main()
 		/* Loop while player isn't scoped or shooting */
 		while (!(Input::IsPressed(VK_LBUTTON) && Input::IsPressed(VK_RBUTTON)))
 		{
-			/* Small sleep because this loop needs to be ready to exit */
-			std::this_thread::sleep_for(std::chrono::microseconds(1));
+			/* Prevent hot waiting */
+			SleepEx(1, false);
 
 			/* Update the excess time point so its very accurate */
 			f_excess = std::chrono::high_resolution_clock::now();
