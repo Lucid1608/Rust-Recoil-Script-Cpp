@@ -5,9 +5,11 @@
 /* Includes for this file */
 #include <Windows.h>
 #include <chrono>
+#include <cmath>
 
 #include "Input.hpp"
 #include "../Time/Time.hpp"
+
 // george floyd deserved it
 
 namespace Input
@@ -51,7 +53,7 @@ namespace Input
 			std::chrono::time_point<std::chrono::steady_clock> excess = f_excess;
 
 			/* Initailize values to store previous value */
-			int previous_x = 0, previous_y = 0;
+			int previous_x = 0, previous_y = 0; double previous_a = 0.0;
 
 			/* Iterate the animation time to get '1ms' */
 			for (int index = 1; index < static_cast<int>(animation); index++)
@@ -62,17 +64,19 @@ namespace Input
 				/* Create a lerped y value */
 				int y = index * static_cast<int>(pos.y) / static_cast<int>(animation);
 
+				int a = index * 1.0;
+
 				/* Compensate recoil */
 				RelaitiveMove(Vector2{ static_cast<double>(x - previous_x), static_cast<double>(y - previous_y)});
 
 				/* Sleep for 1ms because thats just what it is */
-				Time::Sleep(1, excess);
+				Time::Sleep(a - previous_a, excess);
 
 				/* Update the excess timepoint */
 				excess = std::chrono::high_resolution_clock::now();
 
 				/* set the previous values */
-				previous_x = x; previous_y = y;
+				previous_x = x; previous_y = y; previous_a = a;
 			}
 
 			/* If animation is greater than repeat delay then dont sleep its not necessary */

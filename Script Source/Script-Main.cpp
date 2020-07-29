@@ -8,6 +8,7 @@
 #include <Windows.h>
 #include <map>
 #include <thread>
+#include <random>
 
 #include "Structure/Struct.hpp"
 #include "Input/Input.hpp"
@@ -20,7 +21,8 @@ std::map<int, Weapon::data> keybind_map
 	{VK_NUMPAD1, RecoilData::assualt_rifle},
 	{VK_NUMPAD2, RecoilData::lr_assault_rifle},
 	{VK_NUMPAD3, RecoilData::mp5},
-	{VK_NUMPAD4, RecoilData::none}
+	{VK_NUMPAD4, RecoilData::none},
+	{VK_NUMPAD5, RecoilData::thompson}
 };
 
 /* Initialize current weapon struct */
@@ -106,13 +108,16 @@ int main()
 			if (!Input::IsPressed(VK_LBUTTON)) break;
 
 			/* Calculate this pixel position */
-			Vector2 pos = RecoilFunction::angle_conversion(current.angles[bullet]);
+			Vector2 pos = RecoilFunction::AngleConversion(current.angles[bullet]);
 
 			/* Calculate the magnitude of this currents iteration */
-			double animation = RecoilFunction::animation_conversion(current.angles[bullet]);
+			double animation = RecoilFunction::AnimationConversion(current.angles[bullet]);
 
-			/* Compensate recoil */
-			Input::Mouse::Lerp(pos, animation, current.repeat_delay, f_excess);
+			/*
+			* Smooth percentage function usage. 
+			* In the percentage parameter %(Percentage eg. 50) / 100 = [0.5] <- This is the parameter value for %50 more animation usage
+			*/
+			Input::Mouse::Lerp(pos, RecoilFunction::SmoothPercentage(animation, current.repeat_delay, 0.5f), current.repeat_delay, f_excess);
 
 			/* Update f_excess for the next iteration so */
 			f_excess = std::chrono::high_resolution_clock::now();
@@ -128,4 +133,4 @@ int main()
 
 	/* Return with success */
 	return EXIT_SUCCESS;
-}
+}	

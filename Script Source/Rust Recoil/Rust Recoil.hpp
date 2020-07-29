@@ -33,14 +33,19 @@ namespace RecoilFunction
 	}
 
 	/*
+	* Simple function to modify the animation time
+	*/
+	double SmoothPercentage(double animation, double repeat_delay, float percentage = 1.0f);
+
+	/*
 	* The basic conversion for the weapons recoil angles to pixels, excluding the scope and weapon FoV
 	*/
-	Vector2 angle_conversion(Vector2 angles);
+	Vector2 AngleConversion(Vector2 angles);
 
 	/*
 	* Useless function but its there for people to see, Normalizes the vector
 	*/
-	double animation_conversion(Vector2 angles);
+	double AnimationConversion(Vector2 angles);
 }
 
 #endif // !_RUST_RECOIL_HPP
