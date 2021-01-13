@@ -11,7 +11,7 @@
 #include <time.h>
 
 /* The undocumented NtDelayExecution function */
-static LONG(__stdcall* NtDelayExecution)(BOOL Alertable, PLARGE_INTEGER DelayInterval) = (LONG(__stdcall*)(BOOL, PLARGE_INTEGER)) GetProcAddress(GetModuleHandle("ntdll.dll"), "NtDelayExecution");
+static LONG(__stdcall* NtDelayExecution)(BOOL Alertable, PLARGE_INTEGER DelayInterval) = (LONG(__stdcall*)(BOOL, PLARGE_INTEGER)) GetProcAddress(GetModuleHandleA("ntdll.dll"), "NtDelayExecution");
 
 
 namespace Time
